@@ -1,4 +1,4 @@
-package com.zeros;
+package com.zeros.handlers;
 
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
@@ -7,12 +7,13 @@ import org.springframework.web.socket.handler.AbstractWebSocketHandler;
 
 
 // We can simply implement the TextWebSocketHandler if we handle only text messages
-public class MarcoHandler extends AbstractWebSocketHandler {
+public class PingHandler extends AbstractWebSocketHandler {
 
     @Override
     protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
         System.out.println("Received message:" + message);
-        session.sendMessage(new TextMessage("Polo!"));
+        Thread.sleep(2000);
+        session.sendMessage(new TextMessage("Pong !"));
     }
 
     @Override
